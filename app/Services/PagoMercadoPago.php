@@ -1,0 +1,15 @@
+<?php
+
+namespace App\Services\EstrategiasPago;
+
+use App\Models\Pedido;
+use App\Services\MercadoPagoService;
+
+class PagoMercadoPago implements EstrategiaPagoInterface
+{
+    public function procesar(Pedido $pedido, $carritos): ?string
+    {
+        $mp = new MercadoPagoService();
+        return $mp->crearPreferencia($pedido, $carritos);
+    }
+}
